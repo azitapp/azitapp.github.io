@@ -1,0 +1,14 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "app.ppstech.azit",
+      "sha256_cert_fingerprints": [
+        "D6:5D:68:18:30:B0:CE:68:31:B7:03:D9:E7:94:43:B0:9A:11:6F:49:12:CB:A9:6F:FB:A0:4B:77:72:2A:2E:32"
+      ]
+    }
+  }
+]
