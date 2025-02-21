@@ -4,30 +4,36 @@
     <script>
       const userAgent = navigator.userAgent;
 
-      const isIOS = /iPad|iPhone|iPod/.test(userAgent);
+      const isIOS = /iPhone|iPad|iPod/.test(userAgent);
       const isAndroid = /Android/.test(userAgent);
+      const isMac = /Mac OS X/.test(userAgent);
+      const isWindows = /Windows/.test(userAgent);
 
       const currentPageUrl = window.location.href.replace('https://', '');
 
-      let customUrl = '';
+      let deepLinkUrl = '';
       let storeUrl = '';
 
-      if (isIOS) {
-        customUrl = `azitapp://${currentPageUrl}`;
+      if (isIOS || isMac) {
+        deepLinkUrl = `azitapp://${currentPageUrl}`;
         storeUrl = 'https://apps.apple.com/app/id1607048779';
-      } else if (isAndroid) {
+      } else if (isAndroid || isWindows) {
         const scheme = 'azitapp';
         const package = 'app.ppstech.azit';
 
-        customUrl = `intent://${currentPageUrl}#Intent;scheme=${scheme};package=${package};end`;
+        deepLinkUrl = `intent://${currentPageUrl}#Intent;scheme=${scheme};package=${package};end`;
         storeUrl = `https://play.google.com/store/apps/details?id=${package}`;
       }
 
-      window.location.href = customUrl;
+      if (isIOS || isAndroid) {
+        window.location.href = deepLinkUrl;
 
-      setTimeout(() => {
-        window.location.href = storeUrl;
-      }, 2000);
+        setTimeout(() => {
+          window.location.href = storeUrl;
+        }, 2000);
+      } else if (isMac || isWindows) {
+        window.open(storeUrl, '_self');
+      }
     </script>
   </body>
 </html>
