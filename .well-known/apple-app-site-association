@@ -1,10 +1,19 @@
 {
   "applinks": {
-      "apps": [],
-      "details": [
+    "apps": [],
+    "details": [
       {
-        "appID": "G9G48UF3H3.app.ppstech.azit",
-        "paths": ["*"]
+        "appIDs": [
+          "G9G48UF3H3.app.ppstech.azit"
+        ],
+        "paths": [
+          "*"
+        ],
+        "components": [
+          {
+            "/": "/*"
+          }
+        ]
       }
     ]
   }
